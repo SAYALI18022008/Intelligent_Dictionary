@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f0eee5">
+  <meta name="description" content="A Trie-powered intelligent dictionary with prefix suggestions, word management, and a growing vocabulary.">
+  <title>Intelligent Dictionary — Discover words</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Intelligent Dictionary home">
+      <span class="brand-mark" aria-hidden="true">T</span>
+      <span class="brand-name">Intelligent <span>Dictionary</span><small>WORDS, CONNECTED</small></span>
+    </a>
+    <nav class="header-right" aria-label="Main navigation">
+      <a href="#search-panel">Search</a>
+      <a href="#dictionary">Dictionary</a>
+      <a class="header-cta" href="#word-tools">Manage words ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero page-shell">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> A SMALL SPACE FOR BIG WORDS</div>
+        <h1>Words, beautifully <em>discovered.</em></h1>
+        <p>Start with a few letters to discover matching words, or add your own words to build a dictionary that grows with you.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#search-panel">Start searching <span>↗</span></a>
+          <span class="hero-note"><span class="tiny-spark">✳</span> Fast prefix search · Powered by a Trie</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Decorative connected word nodes">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="art-node node-root">root</div>
+        <div class="art-line line-one"></div><div class="art-line line-two"></div><div class="art-line line-three"></div>
+        <div class="art-node node-a">a</div><div class="art-node node-c">c</div><div class="art-node node-t">t</div>
+        <div class="art-tag">ONE PREFIX<br><strong>MANY WORDS</strong></div>
+        <div class="art-stamp">GROW<br>YOUR<br>VOCABULARY ✳</div>
+      </div>
+    </section>
+
+    <section class="page-shell app-section" aria-label="Dictionary app">
+      <div class="app-grid">
+        <section class="panel search-panel" id="search-panel" aria-labelledby="search-title">
+          <div class="panel-heading">
+            <div><div class="panel-kicker">01 / LOOK UP</div><h2 id="search-title">Search &amp; suggestions</h2></div>
+            <span class="online-indicator"><i></i> READY</span>
+          </div>
+          <label class="sr-only" for="search-input">Enter a word or prefix</label>
+          <div class="search-field-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.3 4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <input id="search-input" type="search" autocomplete="off" spellcheck="false" placeholder="Try a prefix — creativity, design, tree…" aria-describedby="search-hint">
+            <button type="button" class="clear-search" id="clear-search" aria-label="Clear search">×</button>
+            <kbd>ENTER</kbd>
+          </div>
+          <div class="search-hint-row"><span id="search-hint">Suggestions update as you type.</span><span id="suggestion-count">0 MATCHES</span></div>
+          <div class="suggestion-heading">
+            <div><span class="section-overline">MATCHING WORDS</span><strong id="prefix-label">Start with a prefix</strong></div>
+            <div class="sort-control" role="group" aria-label="Rank suggestions">
+              <button type="button" class="sort-button is-active" data-sort="alpha" aria-pressed="true">A–Z</button>
+              <button type="button" class="sort-button" data-sort="frequency" aria-pressed="false">Most searched</button>
+            </div>
+          </div>
+          <div class="suggestion-list" id="suggestion-list" aria-live="polite" aria-label="Word suggestions"></div>
+          <p class="search-feedback" id="search-feedback" aria-live="polite">Type a prefix or try one of the examples below.</p>
+          <div class="example-prefixes"><span>TRY</span><button type="button" data-prefix="app">app</button><button type="button" data-prefix="cre">cre</button><button type="button" data-prefix="des">des</button><button type="button" data-prefix="tre">tre</button><button type="button" data-prefix="com">com</button></div>
+        </section>
+
+        <aside class="right-column">
+          <section class="panel tools-panel" id="word-tools" aria-labelledby="tools-title">
+            <div class="panel-heading compact-heading"><div><div class="panel-kicker">02 / EDIT</div><h2 id="tools-title">Word tools</h2></div><span class="tools-icon" aria-hidden="true">＋</span></div>
+            <label class="field-label" for="manage-input">WORD TO ADD OR DELETE</label>
+            <input class="manage-input" id="manage-input" type="text" autocomplete="off" spellcheck="false" placeholder="Enter one word">
+            <div class="manage-actions"><button class="add-button" id="add-button" type="button"><span>＋</span> Add word</button><button class="delete-button" id="delete-button" type="button"><span>−</span> Delete</button></div>
+            <p class="manage-feedback" id="manage-feedback" aria-live="polite">Your words are saved in this browser.</p>
+          </section>
+          <section class="stats-card" aria-label="Dictionary statistics">
+            <div class="stats-title"><span>YOUR DICTIONARY</span><span class="stats-spark" aria-hidden="true">✳</span></div>
+            <div class="stats-grid"><div class="stat-item"><strong id="stat-words">0</strong><span>WORDS</span></div><div class="stat-item"><strong id="stat-searches">0</strong><span>SEARCHES</span></div></div>
+            <div class="popular-word"><span>MOST SEARCHED</span><strong id="stat-popular">—</strong></div>
+          </section>
+        </aside>
+      </div>
+
+      <section class="panel dictionary-panel" id="dictionary" aria-labelledby="dictionary-title">
+        <div class="dictionary-heading">
+          <div><div class="panel-kicker">03 / YOUR WORDS</div><h2 id="dictionary-title">Dictionary</h2><p>Browse your collection, filter it, or remove a word.</p></div>
+          <div class="dictionary-controls"><label class="dictionary-filter-wrap"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.3 4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><input id="dictionary-filter" type="search" placeholder="Search your saved words…" aria-label="Search your saved dictionary words"></label><span id="dictionary-count" class="dictionary-count">0 words</span></div>
+        </div>
+        <div class="word-table-wrap"><table class="word-table"><thead><tr><th scope="col">WORD</th><th scope="col">SEARCHES</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody id="word-list"></tbody></table><div class="dictionary-empty" id="dictionary-empty" hidden>Your dictionary is empty. Add a word above to get started.</div><div class="filter-empty" id="filter-empty" hidden>No words match this filter.</div></div>
+      </section>
+
+
+      <div class="trie-note"><span class="trie-note-mark" aria-hidden="true">T</span><p><b>Powered by a Trie.</b> Shared prefixes reuse the same branches, allowing efficient prefix-based suggestions.</p><span class="storage-note"><i></i> SAVED LOCALLY</span></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="page-shell footer-inner"><a class="brand footer-brand" href="#top"><span class="brand-mark">T</span><span class="brand-name">Intelligent <span>Dictionary</span><small>WORDS, CONNECTED</small></span></a><span>Prefix search · Suggestions · Trie data structure</span><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>
