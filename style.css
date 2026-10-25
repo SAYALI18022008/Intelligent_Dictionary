@@ -26,7 +26,7 @@ a { color: inherit; text-decoration: none; }
 button { cursor: pointer; }
 ::selection { background: var(--sage); color: var(--forest-deep); }
 .page-shell { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
-.site-header { position:sticky;min-height: 76px; padding: 12px max(24px, calc((100vw - 1160px)/2)); display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid rgba(32,53,44,.12); background:rgba(247,245,238,.88); }
+.site-header { position:sticky;top:0;z-index:1000;min-height: 76px; padding: 12px max(24px, calc((100vw - 1160px)/2)); display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid rgba(32,53,44,.12); background:rgba(247,245,238,.88); }
 .brand { display:flex; align-items:center; gap:12px; min-width:max-content; }
 .brand-mark { display:grid; place-items:center; width:42px; height:42px; border-radius:14px 14px 14px 4px; background:var(--forest); color:var(--cream-light); font-family:"Playfair Display",serif; font-size:25px; font-weight:700; }
 .brand-name { display:flex; flex-wrap:wrap; align-items:baseline; column-gap:5px; font-size:17px; font-weight:700; letter-spacing:-.5px; line-height:1.2; }
